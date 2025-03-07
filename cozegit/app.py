@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import uuid
@@ -63,7 +64,7 @@ def chat():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# ... 其他代码保持不变 ...
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5001)))
+    port = int(os.environ.get('PORT', 5001))  # 这行新加的
+    app.run(host='0.0.0.0', port=port)        # 修改这里
